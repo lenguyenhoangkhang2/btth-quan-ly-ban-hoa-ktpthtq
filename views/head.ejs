@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cua hang Hoa Dep</title>
+<style type="text/css">
+.style2 {
+	color: #000099;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: smaller;
+}
+.style3 {
+	color: #006633;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: smaller;
+}
+.style5 {
+	font-size: smaller;
+	font-weight: bold;
+	color: #009933;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.style10 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: smaller; }
+a:link {
+	color: #006633;
+}
+a:visited {
+	color: #006633;
+}
+a:hover {
+	color: #009900;
+}
+a:active {
+	color: #009900;
+}
+.style12 {font-size: smaller}
+</style>
+</head>
+
+<body>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr bgcolor="#F4FBEB">
+      <td width="21%" valign="top">
+        <img src="images/LogotypeKvitka.gif" width="205" height="102" />
+      </td>
+      <td width="28%" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="2">
+        <table>
+          <tr>
+            <td><span class="style5">(08) 9891234 </span></td>
+          </tr>
+          <tr>
+            <td><span class="style10">(Giờ mở cửa: 8:00 - 22:00 mỗi ngày) </span></td>
+          </tr>
+          <tr>
+            <td><span class="style10"><img src="images/IconMail.gif" width="16" height="16" /> <a href="./ktphuong@hcmuns.edu.vn">ktphuong@hcmuns.edu.vn </a></span></td>
+          </tr>
+          <tr>
+            <td><span class="style10"><img src="images/online0.gif" width="18" height="18" />hoadep.com.vn</span></td>
+          </tr>
+        </table>
+      </td>
+      <td width="27%" valign="top">
+        <%- include("./form_dang_nhap.ejs") %> 
+      </td>
+      <td width="24%" valign="top"><table width="100%" border="0">
+        <table>
+          <tr>
+            <td valign="top"><div align="center" class="style5">Có thể thanh toán bằng</div></td>
+          </tr>
+          <tr>
+            <td valign="top"><div align="center" class="style10">
+              <img src="images/IconCardMasterCard.gif" width="37" height="23" />
+              <img src="images/IconCardVisaE.gif" width="37" height="23" />
+              <img src="images/IconCardVisa.gif" width="37" height="23" /></div>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><%= username %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" bgcolor="#D3F4CE"><span class="style3">&nbsp;Danh mục hoa</span></td>
+      <td colspan="3" valign="top" background="images/nen.jpg">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr align="center" class="style10" bgcolor="#CCFFCC">
+            <td width="25%" height="23" bgcolor="#CCFFCC"><strong>
+              <a href="/"><strong>Trang chủ</strong></a>
+            </td>
+            <td width="25%"><strong>
+              <a href="/search"><strong>Tìm kiếm bó hoa</strong></a>
+            </td>
+            <% if(isAdmin) { %> 
+              <td width="28%"><strong><a href="/admin/add-flower"><strong>Thêm bó hoa mới</strong></a></td>
+            <% } %> 
+            <td width="22%"><strong><a href="/signup"><%= isLoggedIn ? "" : "Đăng ký mới"%></a></strong></td>
+          </tr>
+        </table>
+      </td>
+    </tr>

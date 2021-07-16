@@ -1,0 +1,205 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Cua hang Hoa Dep</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+  .style2 {
+    color: #000099;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: smaller;
+  }
+
+  .style3 {
+    color: #006633;
+    font-weight: bold;
+  }
+
+  .style4 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #009933;
+  }
+
+  .style7 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: smaller;
+  }
+
+  .style11 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-weight: bold;
+    color: #009933;
+  }
+
+  .style16 {
+    font-size: smaller
+  }
+
+  a:link {
+    color: #006633;
+  }
+
+  a:visited {
+    color: #006633;
+  }
+
+  a:hover {
+    color: #009900;
+  }
+
+  a:active {
+    color: #009900;
+  }
+  </style>
+  
+</head>
+
+<body>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr bgcolor="#F4FBEB">
+      <td width="21%" valign="top"><img src="images/LogotypeKvitka.gif" width="200" height="112" /></td>
+      <td width="28%" valign="top">
+        <div align="center">
+          <table width="300" border="0" cellpadding="0" cellspacing="2" bgcolor="#F4FBEB">
+            <tr>
+              <td><span class="style11">(08) 9891234 </span></td>
+            </tr>
+            <tr>
+              <td><span class="style7">(Giờ mở cửa: 8:00 - 22:00 mỗi ngày) </span></td>
+            </tr>
+            <tr>
+              <td><span class="style7"><img src="images/IconMail.gif" width="16" height="16" /> <a
+                    href="./ktphuong@hcmuns.edu.vn">ktphuong@hcmuns.edu.vn </a></span></td>
+            </tr>
+            <tr>
+              <td><span class="style7"><img src="images/online0.gif" width="18" height="18" />hoadep.com.vn</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+      <td colspan="3" valign="top">
+        <div align="right"><img src="images/top.jpg" width="450" height="113"></div>
+      </td>
+    </tr>
+    <tr bgcolor="#F4FBEB">
+      <td valign="top">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td bgcolor="#C7EAB0">
+              <table width="100%" border="0" bgcolor="#F4FBEB">
+                <tr>
+                  <td><span>&nbsp;<a href="/">Trang chủ</a></span></td>
+                </tr>
+                <tr>
+                  <td><span>&nbsp;<a href="/search">Tìm kiếm bó hoa</a></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span>&nbsp;<a href="/add-flower">Thêm mới bó hoa</a></span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td valign="bottom" bgcolor="#F4FBEB">&nbsp;</td>
+          </tr>
+        </table>
+        <img src="images/BannerSideCreative.jpg" width="200" height="200" />
+      </td>
+      <td colspan="3" valign="top">
+        <p>&nbsp;</p>
+        <h3 class="text-center">Giỏ Hàng</h3>
+        <% if(cart.length > 0) { %> 
+          <div class="row justify-content-center">
+            <div class="col-8">
+              <table class="table table-success table-striped">
+                <thead>
+                  <th>Sản phẩm</th>
+                  <th>Số lương</th>
+                  <th>Giá cả</th>
+                  <th>Tổng</th>
+                  <th>Xóa</th>
+                </thead>
+                <tbody>
+                  <% cart.forEach(item => { %> 
+                    <tr>
+                      <td>
+                        <strong><%= item.name %></strong><br/>
+                        <img src="/<%= item.imageUrl %>" width="100" height="100"/>
+                      </td>
+                      <td >
+                        <form action="/update-quantity-cart-item/<%= item._id %>" method="POST">
+                          <input class="quantity" type="number" value="<%= item.quantity %>" name="quantity"/>
+                        </form>
+                      </td>
+                      <td>
+                        <span><%= item.price %></span>
+                      </td>
+                      <td>
+                        <span class="cart-item-total"><%= item.price * item.quantity %></span>
+                      </td>
+                      <td>
+                        <form action="/delete-cart-item/<%= item._id %>" method="POST">
+                          <button type="submit">Xóa</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }) %> 
+                  <tr>
+                    <td class="text-end" colspan="100%">
+                      <div class="mb-2">
+                        <strong id="cart-total"></strong>
+                      </div>
+                      <% if(isLoggedIn) { %>
+                        <form action="/order" method="POST">
+                          <button type="submit" class="btn btn-sm btn-primary">Đặt Hàng</button>
+                        </form>
+                      <% } else { %>
+                        <a href="guest-order" class="text-light btn btn-sm btn-primary">Đặt Hàng</a>
+                      <% } %>   
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% } else { %> 
+          <h4 class="text-center">Chưa có sản phẩm trong giỏ hàng</h4>
+        <% } %> 
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" bgcolor="#DEF4CE"><span class="style2">Copyright &copy;2003-2007 <br />
+          Công ty thiết kế Ý Tưởng </span></td>
+      <td valign="top" bgcolor="#DEF4CE"><span class="style16"></span></td>
+      <td width="27%" valign="top" bgcolor="#DEF4CE"><span class="style16"></span></td>
+      <td bgcolor="#DEF4CE"><span class="style7"><img src="images/IconMail.gif" width="16" height="16" />
+          <a href="./ktphuong@hcmuns.edu.vn">ktphuong@hcmuns.edu.vn</a>
+          <br />
+          <img src="images/online0.gif" width="18" height="18" />hoadep.com.vn</span></td>
+    </tr>
+  </table>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("form .quantity").on("change", function() {
+        $(this).closest("form").submit();
+      })
+
+      let total = 0;
+
+      $(".cart-item-total").each(function() {
+        total += parseInt(this.innerHTML);
+      })
+
+      $("#cart-total").text(`Tổng tiền: ${total}`);
+    })
+  </script>
+</body>
+</html>

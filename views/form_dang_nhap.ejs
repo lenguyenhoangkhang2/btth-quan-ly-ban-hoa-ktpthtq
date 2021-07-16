@@ -1,0 +1,46 @@
+<% if(!isLoggedIn) { %> 
+  <form id="form1" name="form1" method="post" action="/login">
+    <table width="100%" border="0" cellpadding="0" cellspacing="2">
+      <tr>
+        <td colspan="2"><div align="center" class="style5">Đăng nhập</div></td>
+      </tr>
+      <tr>
+        <td width="46%"><p class="style10">Tên đăng nhập: </p></td>
+        <td width="54%"><span class="style10">
+          <label>
+            <input name="tendn" type="text" id="ten_dn" size="15" />
+            </label>
+        </span> </td>
+      </tr>
+      <tr>
+        <td><p class="style10">Mật khẩu: </p></td>
+        <td><span class="style10">
+          <label>
+            <input name="matkhau" type="password" id="mat_khau" size="15" />
+            </label>
+        </span></td>
+      </tr>
+      
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="Đăng nhập" />
+        </label>
+      </div></td>
+      </tr>
+    </table>	
+  </form>
+<% } else { %>
+  <form id="form1" name="form1" method="post" action="/logout">
+    <table width="100%" border="0" cellpadding="0" cellspacing="2">
+      <tr>
+        <td colspan="2"><div align="center" class="style5">Đăng xuất</div></td>
+      </tr>
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="Đăng xuất" />
+        </label>
+      </div></td>
+      </tr>
+    </table>	
+  </form>
+<% } %>  
